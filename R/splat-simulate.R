@@ -317,8 +317,9 @@ splatSimGeneMeans <- function(sim, params) {
     out.facScale <- getParam(params, "out.facScale")
 
     # Simulate base gene means
-    base.means.gene <- rgamma(nGenes, shape = mean.shape, rate = mean.rate)
-
+    withr::with_seed(getParam(params, "seed"), {
+        base.means.gene <- rgamma(nGenes, shape = mean.shape, rate = mean.rate)
+    })
     # Add expression outliers
     outlier.facs <- getLNormFactors(nGenes, out.prob, 0, out.facLoc,
                                     out.facScale)
