@@ -39,6 +39,8 @@ setClass("Params",
 #'     distribution.}
 #'     \item{\code{mean.rate}}{The rate parameter for the mean gamma
 #'     distribution.}
+#'     \item{\code{auxiliary.factor}}{The auxiliary factor for the DEFacGroup
+#'     will scale all groups at same time.}
 #'     \item{\code{[count.disp]}}{The dispersion parameter for the counts
 #'     negative binomial distribution.}
 #' }
@@ -55,9 +57,10 @@ setClass("SimpleParams",
          contains = "Params",
          slots = c(mean.shape = "numeric",
                    mean.rate = "numeric",
-                   count.disp = "numeric"),
+                   count.disp = "numeric",
+                   auxiliary.factor = "numeric"),
          prototype = prototype(mean.shape = 0.4, mean.rate = 0.3,
-                               count.disp = 0.1))
+                               count.disp = 0.1, auxiliary.factor = 1))
 
 #' The SplatParams class
 #'
